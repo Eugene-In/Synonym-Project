@@ -6,12 +6,14 @@ class SlidingWindow:
     # minfreq = 1
     i = 0
     holder = []
+
     while i == 0:
         try:
             readfile = input("Please enter your file name: \n")
-            winlength = int(input("How big do you want your window?\n"))
             #readfile = "testingFileDream.txt"
-            #winlength = 50
+            winlength = int(input("\nHow big do you want your window?\n"))
+            #winlength = 15
+
             with open(readfile, "r", encoding="utf-8") as fp:
                 line = fp.readline()
                 while line:
@@ -19,38 +21,31 @@ class SlidingWindow:
                     b = re.findall(r"\w+", qwe)
                     holder.extend(b)
                     line = fp.readline()
+                fp.close()
+
+            t = 0
+            while t == 0:
+                try:
+                    response = int(input("\nDo you want to ignore any word?:\n (Yes/1, No/2)\n"))
+                    if response == 1:
+                        fp = open(r"ignoreList.txt", "w", encoding="utf-8")
+                        fp.write(input("\nPlease input words you don't want\nPut a space between each word.\n"))
+                        fp.close()
+                        t += 1
+                    elif response ==2:
+                        fp = open(r"ignoreList.txt", "w", encoding="utf-8")
+                        fp.write("")
+                        fp.close()
+                        t += 1
+                    else:
+                        print("\nPlease input 1 or 2 for the ignore list.\n")
+                except ValueError:
+                    print("\nPlease input 1 or 2 for the ignore list:\n")
+
             i += 1
-        except:
-            print("This is no file with that name.\nPlease try again")
+        except FileNotFoundError:
+            print("\nThis is no file with that name.\nPlease try again\n")
+        except ValueError:
+            print("\nThis isn't a number, please input a number for the window.\n")
 
-    print(holder)
     LookingGlass.wonderland(winlength, holder)
-    """
-    if len(sys.argv) < 4:
-        if len(sys.argv) == 3:
-            howmany = int(sys.argv[0])
-            minlength = int(sys.argv[1])
-            lastNWords = int(sys.argv[2])
-            minfreq = 1
-        elif len(sys.argv) == 2:
-            howmany = int(sys.argv[0])
-            minlength = int(sys.argv[1])
-            lastNWords = 50
-            minfreq = 1
-        elif len(sys.argv) == 1:
-            howmany = int(sys.argv[0])
-            minlength = 3
-            lastNWords = 50
-            minfreq = 1
-        elif len(sys.argv) == 0:
-            howmany = 8
-            minlength = 3
-            lastNWords = 50
-            minfreq = 1
-    else:
-        howmany = int(sys.argv[0])
-        minlength = int(sys.argv[1])
-        lastNWords = int(sys.argv[2])
-        minfreq = int(sys.argv[3])
-
-    """

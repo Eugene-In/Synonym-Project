@@ -1,16 +1,26 @@
-class IgnoreList: 
+import re
 
-  def ignoreList(yes):
-    il = open(r"ignoreList.txt","r")
-    contain = il.readline()
-    hail = contain.split()
+class IgnoreList:
+
+  def ignoreDict(hail):
+    with open(r"ignoreList.txt", "r", encoding="utf-8") as fp:
+        contain = fp.readline()
+        while contain:
+            qwe = contain.replace('_'," ")
+            b = re.findall(r"\w+", qwe)
+            hail.extend(b)
+            contain = fp.readline()
+    fp.close()
+
     hydra = []
     for x in hail:
-        x.lower()
-        hydra.append(x)
-        
+        y = x.lower()
+        hydra.append(y)
+    return hydra
+
+  def ignoreWord(yes, hydra):
     if yes in hydra:
-      provide = ""
+      provide = "Ignored word: program Synonym checker"
       return provide
     else:
       return yes

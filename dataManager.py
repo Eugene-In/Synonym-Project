@@ -1,10 +1,24 @@
+import re
+from ignore import IgnoreList
+
 class DataManager:
 
     def manager(dodge):
         bullet = {}
+        hail = []
+        hydra = IgnoreList.ignoreDict(hail)
+
         for x in dodge:
-            if x in bullet:
-                bullet[x] = bullet[x]+1
+            y = IgnoreList.ignoreWord(x, hydra)
+            if y in bullet:
+                bullet[y] = bullet[y]+1
             else:
-                bullet[x] = 1
+                bullet[y] = 1
         return bullet
+
+    def completeTable(q):
+        cq = []
+        for x in q :
+            y = x.lower()
+            cq.append(y)
+        return cq

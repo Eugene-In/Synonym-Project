@@ -5,42 +5,31 @@ class LookingGlass:
 
     def wonderland(winlength, holder):
         q = []
+        cq = DataManager.completeTable(holder)
         cnt = 0
+
         while len(q) < winlength:
             x = holder[cnt]
             y = x.lower()
-            '''
-            x2 = IgnoreList.ignoreList(x)
-            if x2 == "":
-                print("")
-            else:
-                q.append(x2)
-                cnt += 1
-                print(cnt)
-             '''
             q.append(y)
             cnt += 1
-            print(cnt)
+
         data = DataManager.manager(q)
+
         print(q)
         print(data)
+        print("\n")
+
+
         while cnt < len(holder):
-            q.pop(0)
             x = holder[cnt]
             y = x.lower()
-            '''
-            x2 = IgnoreList.ignoreList(x)
-            if x2 == "":
-                print("")
-            else:
-                q.append(x2)
-                cnt += 1
-                print(cnt)
-                print(q)
-            '''
+            q.pop(0)
             q.append(y)
             cnt += 1
             data = DataManager.manager(q)
+
             print(cnt)
             print(q)
             print(data)
+            print("\n")
