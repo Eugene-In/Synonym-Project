@@ -15,11 +15,11 @@ class LookingGlass:
             cnt += 1
 
         data = DataManager.manager(q)
-
+        """
         print(q)
         print(data)
         print("\n")
-
+        """
 
         while cnt < len(holder):
             x = holder[cnt]
@@ -28,8 +28,9 @@ class LookingGlass:
             q.append(y)
             cnt += 1
             data = DataManager.manager(q)
-
+            """
             print(cnt)
             print(q)
             print(data)
             print("\n")
+            """
