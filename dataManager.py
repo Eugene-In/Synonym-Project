@@ -3,18 +3,16 @@ from ignore import IgnoreList
 
 class DataManager:
 
-    def manager(dodge):
-        bullet = {}
-        hail = []
-        hydra = IgnoreList.ignoreDict(hail)
+    def manager(il, q):
+        data = {}
 
-        for x in dodge:
-            y = IgnoreList.ignoreWord(x, hydra)
-            if y in bullet:
-                bullet[y] = bullet[y]+1
+        for x in q:
+            y = IgnoreList.ignoreWord(x, il)
+            if y in data:
+                data[y] = data[y]+1
             else:
-                bullet[y] = 1
-        return bullet
+                data[y] = 1
+        return data
 
     def completeTable(q):
         cq = []

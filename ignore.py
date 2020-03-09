@@ -2,25 +2,25 @@ import re
 
 class IgnoreList:
 
-  def ignoreDict(hail):
+  def ignoreDict(il):
     with open(r"ignoreList.txt", "r", encoding="utf-8") as fp:
         contain = fp.readline()
         while contain:
             qwe = contain.replace('_'," ")
             b = re.findall(r"\w+", qwe)
-            hail.extend(b)
+            il.extend(b)
             contain = fp.readline()
     fp.close()
 
-    hydra = []
-    for x in hail:
+    finalIL = []
+    for x in il:
         y = x.lower()
-        hydra.append(y)
-    return hydra
+        finalIL.append(y)
+    return finalIL
 
-  def ignoreWord(yes, hydra):
-    if yes in hydra:
+  def ignoreWord(word, finalIL):
+    if word in finalIL:
       provide = "Ignored word: program Synonym checker"
       return provide
     else:
-      return yes
+      return word
