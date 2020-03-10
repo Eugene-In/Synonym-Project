@@ -1,5 +1,6 @@
 from ignore import IgnoreList
 from dataManager import DataManager
+from overUsedWord import FindingWord
 
 class LookingGlass:
 
@@ -17,25 +18,29 @@ class LookingGlass:
             cnt += 1
 
         data = DataManager.manager(il, q)
-        #Put function to do something with data and q here
+        FindingWord.comparing(q, data, cnt, cq)
 
-        """
+        '''
         print(q)
         print(data)
         print("\n")
-        """
+        '''
 
         while cnt < len(holder):
             x = holder[cnt]
             y = x.lower()
-            q.pop(0)
+            if len(q) == winlength:
+                q.pop(0)
             q.append(y)
             cnt += 1
             data = DataManager.manager(il, q)
-            #Put function to do something with data and q here
-            """
+            if len(q) == winlength:
+                FindingWord.comparing(q, data, cnt, cq)
+            '''
             print(cnt)
             print(q)
             print(data)
             print("\n")
-            """
+            '''
+        print("\nDone")
+        FindingWord.editedDraft(cq)
