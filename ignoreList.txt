@@ -1,1 +1,4 @@
+<<<<<<< HEAD
+=======
 I have a fucking dream
+>>>>>>> 5204b5a35392bd1c26f646632054cf5a11dc6341

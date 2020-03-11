@@ -8,7 +8,8 @@ def synonyms(term):
     response = requests.get('http://www.thesaurus.com/browse/{}'.format(term))
     soup = BeautifulSoup(response.text,features="html.parser")
     section = soup.find('section', {'class': 'e1991neq0'})
-    return [span.text for span in section.findAll('span')]
+    if section != None:
+        return [span.text for span in section.findAll('span')]
    
 #WIP   
 def antonyms(term):

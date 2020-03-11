@@ -1,17 +1,13 @@
 from ignore import IgnoreList
 from dataManager import DataManager
-from overUsedWord import FindingWord
-
-#is this working now
-
+import dictionaryHandler as syn
 class LookingGlass:
 
-    def wonderland(winlength, holder):
+    def wonderland(winlength, holder, printFreq, printArray, printText):
         q = []
         cq = DataManager.completeTable(holder)
         cnt = 0
-        hail = []
-        il = IgnoreList.ignoreDict(hail)
+        displayCnt = 0
 
         while len(q) < winlength:
             x = holder[cnt]
@@ -19,14 +15,12 @@ class LookingGlass:
             q.append(y)
             cnt += 1
 
-        data = DataManager.manager(il, q)
-        FindingWord.comparing(q, data, cnt, cq)
 
-        '''
-        print(q)
-        print(data)
-        print("\n")
-        '''
+        data = DataManager.manager([] ,q)
+        print("First print instance")
+        print("q: " + str(q))
+        print("data: " + str(data))
+
 
         while cnt < len(holder):
             x = holder[cnt]
@@ -35,14 +29,24 @@ class LookingGlass:
                 q.pop(0)
             q.append(y)
             cnt += 1
-            data = DataManager.manager(il, q)
-            if len(q) == winlength:
-                FindingWord.comparing(q, data, cnt, cq)
-            '''
-            print(cnt)
-            print(q)
-            print(data)
-            print("\n")
-            '''
-        print("\nDone")
-        FindingWord.editedDraft(cq)
+
+            displayCnt += 1
+            data = DataManager.manager([], q)
+
+
+            if displayCnt == winlength:
+                print("second instance of printing")
+                print(cnt)
+                for argh in q:
+                    print(argh)
+                    print(syn.synonyms(argh))
+                if printArray != None:
+                    print(q)
+                if printText !=None:
+                    dumpstr = " "
+                    print(dumpstr.join(q))
+                if printFreq != None:
+                    print(data)
+                print("\n")
+                displayCnt = 0
+
