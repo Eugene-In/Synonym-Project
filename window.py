@@ -2,6 +2,8 @@ from ignore import IgnoreList
 from dataManager import DataManager
 from overUsedWord import FindingWord
 
+#is this working now
+
 class LookingGlass:
 
     def wonderland(winlength, holder):
