@@ -10,12 +10,13 @@ class LookingGlass:
         #For ignoreList
         #hail = []
         #il = IgnoreList.ignoreDict(hail)
-        displayCnt = 0
+        displayCnt = -1
 
         while len(q) < winlength:
             x = holder[cnt]
             y = x.lower()
             q.append(y)
+            displayCnt += 1
             cnt += 1
 
         #Empty array in manager is for ignoreList
@@ -39,16 +40,19 @@ class LookingGlass:
 
 
             if displayCnt == winlength:
-                print("second instance of printing")
-                print(cnt)
+                print("\nsecond instance of printing")
+                print(str(cnt)+"\n")
                 for argh in q:
                     print(argh)
                     print(syn.synonyms(argh))
+                    print('\n')
                 if printArray != None:
                     print(q)
+                    print('\n')
                 if printText !=None:
                     dumpstr = " "
                     print(dumpstr.join(q))
+                    print('\n')
                 if printFreq != None:
                     print(data)
                 print("\n")
