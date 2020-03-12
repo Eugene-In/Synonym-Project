@@ -7,6 +7,9 @@ class LookingGlass:
         q = []
         cq = DataManager.completeTable(holder)
         cnt = 0
+        #For ignoreList
+        #hail = []
+        #il = IgnoreList.ignoreDict(hail)
         displayCnt = 0
 
         while len(q) < winlength:
@@ -15,7 +18,7 @@ class LookingGlass:
             q.append(y)
             cnt += 1
 
-
+        #Empty array in manager is for ignoreList
         data = DataManager.manager([] ,q)
         print("First print instance")
         print("q: " + str(q))
@@ -31,6 +34,7 @@ class LookingGlass:
             cnt += 1
 
             displayCnt += 1
+            #Empty array in manager is for ignoreList
             data = DataManager.manager([], q)
 
 
@@ -49,4 +53,3 @@ class LookingGlass:
                     print(data)
                 print("\n")
                 displayCnt = 0
-
