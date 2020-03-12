@@ -4,11 +4,7 @@ import dictionaryHandler as syn
 from window import LookingGlass
 
 class SlidingWindow:
-    # wordlength = 6
-    # minfreq = 1
-    i = 0
-    holder = []
-    
+
     outputFreq = None
     outputArray = None
     outputText = None
@@ -18,10 +14,11 @@ class SlidingWindow:
         outputFreq = True
     if '-t' in sys.argv:
         outputText = True
-        
-    while i == 0:
+
+    while True:
         try:
             #readfile = input("Please enter your file name: \n")
+            holder = []
             readfile = "testingFileDream.txt"
             winlength = int(input("\nHow big do you want your window?\n"))
             #winlength = 15
@@ -38,7 +35,6 @@ class SlidingWindow:
             else:
                 pez = winlength-len(holder)
                 print("\nWindow is too big, by "+str(pez)+" number of words. \nPlease input a smaller window\n")
-            break
         except FileNotFoundError:
             print("\nThis is no file with that name.\nPlease try again\n")
         except ValueError:
