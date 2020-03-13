@@ -1,10 +1,13 @@
 import re
+import operator
 from ignore import IgnoreList
 
 class DataManager:
 
     def manager(il, q):
+        
         data = {}
+        print(type(data))
 
         for x in q:
             y = IgnoreList.ignoreWord(x, il)
@@ -12,7 +15,7 @@ class DataManager:
                 data[y] = data[y]+1
             else:
                 data[y] = 1
-        return data
+        return dict( sorted(data.items(), key=operator.itemgetter(1),reverse=True))
 
     def completeTable(q):
         cq = []
