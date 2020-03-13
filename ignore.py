@@ -19,11 +19,8 @@ class IgnoreList:
     return finalIL
 
   def ignoreWord(word, finalIL):
-    if word in finalIL:
-      provide = "Ignored word: program Synonym checker"
-      return provide
-    else:
-      return word
+    if (not(word in finalIL)):
+        return word
     '''
     To be put in main.py if we want to use ignoreList: Matthew
     while True:

@@ -1,6 +1,8 @@
 import sys
 import re
 import dictionaryHandler as syn
+import string
+import re
 from ignore import IgnoreList
 from dataManager import DataManager
 from window import LookingGlass
@@ -10,6 +12,9 @@ class paragraphBreaker:
         data = f.readlines()
     for x in data:
         print(x)
-        splitArray = x.split()
-        freqTable = DataManager.manager([], splitArray)
+        loweredArray = x.lower()
+        splitArray = re.findall(r"[\w']+", loweredArray)
+        
+        freqTable = DataManager.manager(["and","the","a"], splitArray)
         print(freqTable)
+        

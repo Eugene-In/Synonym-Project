@@ -11,10 +11,11 @@ class DataManager:
 
         for x in q:
             y = IgnoreList.ignoreWord(x, il)
-            if y in data:
-                data[y] = data[y]+1
-            else:
-                data[y] = 1
+            if y != None:
+                if y in data:
+                    data[y] = data[y]+1
+                else:
+                    data[y] = 1
         return dict( sorted(data.items(), key=operator.itemgetter(1),reverse=True))
 
     def completeTable(q):
