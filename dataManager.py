@@ -5,9 +5,9 @@ from ignore import IgnoreList
 class DataManager:
 
     def manager(il, q):
-        
+
         data = {}
-        print(type(data))
+        #print(type(data))
 
         for x in q:
             y = IgnoreList.ignoreWord(x, il)
