@@ -15,22 +15,14 @@ shortcutDict = {}
 
 
 
-
-
 def setShortcuts(pairToSplit):
     values = pairToSplit.split(":")
     keyToAdd = values[0]
     valueToAdd = values[1]
     shortcutDict[keyToAdd] = valueToAdd
+    return shortcutDict
     
     
-
-def checkWord(wordToCheck):
-    if wordToCheck in shortcutDict:
-        return shortcutDict[wordToCheck]
-    else:
-        return None
-        
 
 """        
 def replaceWord(wordToCheck):
