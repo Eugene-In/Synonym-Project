@@ -1,43 +1,66 @@
 import sys
 import re
 import dictionaryHandler as syn
-import string
-import re
 from ignore import IgnoreList
 from dataManager import DataManager
 from window import LookingGlass
 
-class paragraphBreaker:
-    with open("testingFileDream.txt",encoding="utf-8") as f:
-        data = f.readlines()
-    for x in data:
-        #This is the string with no editing done
-        print(x)
-        loweredArray = x.lower()
-        #this is where the lines are being broken down into arrays. THIS IS WHERE WE WOULD INSERT DIFFERENT SPLIT SYSTEMS
-        splitArray = re.findall(r"[\w']+", loweredArray)
-        
-        freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
-        #This is what the word frequency table looks like
-        #print(freqTable)
-        
-        #Do we want to split this into a different class or function. That way one function breaks the paragraph which it then hands to the synonym checker
-        
-        wordsToReplace = []
-        for y in freqTable:
-            if freqTable.get(y) != 1:
-                wordsToReplace.append(y)
-        #Only words that appear more than once need to be considered
-        print(wordsToReplace)
-        for y in wordsToReplace:
-            print("Synonyms for '" + y + "' are: ",syn.synonyms(y))
-        
-        def reaplaceEngine(freqTableToUse):
+class ParagraphBreaker:
+
+        fileName = "testingFileDream.txt"
+        with open(fileName, encoding="utf-8") as f:
+            data = f.readlines()
+
+        while True:
+            try:
+                response = input('\nBreak down to sentences?\n').lower()
+                if response == 'yes':
+                    break
+                elif response == 'no':
+                    break
+                else:
+                    print("\nPlease input yes or no ONLY\n")
+            except ValueError:
+                print("\nError, yes or no ONLY\n")
+
+        for x in data:
+            #print(x)
+            loweredArray = x.lower()
+            if response == 'yes':
+                sentences = loweredArray.split('.')
+                for y in sentences:
+                    splitArray = re.findall(r"[\w']+", y)
+                    freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
+                    #print(freqTable)
+                    #replaceEngine(freqTable) would replace this part of the code
+                    wordsToReplace = []
+                    for y in freqTable:
+                        if freqTable.get(y) != 1:
+                            wordsToReplace.append(y)
+                    #print(wordsToReplace)
+                    for y in wordsToReplace:
+                        print("\nSynonyms for '" + y + "' are: ",syn.synonyms(y))
+                        print('\n')
+            else:
+                splitArray = re.findall(r"[\w']+", loweredArray)
+                freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
+                #print(freqTable)
+                #replaceEngine(freqTable) would replace this part of the code
+                wordsToReplace = []
+                for y in freqTable:
+                    if freqTable.get(y) != 1:
+                        wordsToReplace.append(y)
+                #print(wordsToReplace)
+                for y in wordsToReplace:
+                    print("\nSynonyms for '" + y + "' are: ",syn.synonyms(y))
+                    print('\n')
+                    
+
+        def replaceEngine(freqTable):
             wordsToReplace = []
             for y in freqTable:
                 if freqTable.get(y) != 1:
                     wordsToReplace.append(y)
-            #Only words that appear more than once need to be considered
-            print(wordsToReplace)
+            #print(wordsToReplace)
             for y in wordsToReplace:
                 print("Synonyms for '" + y + "' are: ",syn.synonyms(y))
