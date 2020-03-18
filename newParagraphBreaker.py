@@ -19,10 +19,9 @@ class paragraphBreaker:
         
         freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
         #This is what the word frequency table looks like
-        print(freqTable)
+        #print(freqTable)
         
         #Do we want to split this into a different class or function. That way one function breaks the paragraph which it then hands to the synonym checker
-        
         
         wordsToReplace = []
         for y in freqTable:
@@ -32,3 +31,13 @@ class paragraphBreaker:
         print(wordsToReplace)
         for y in wordsToReplace:
             print("Synonyms for '" + y + "' are: ",syn.synonyms(y))
+        
+        def reaplaceEngine(freqTableToUse):
+            wordsToReplace = []
+            for y in freqTable:
+                if freqTable.get(y) != 1:
+                    wordsToReplace.append(y)
+            #Only words that appear more than once need to be considered
+            print(wordsToReplace)
+            for y in wordsToReplace:
+                print("Synonyms for '" + y + "' are: ",syn.synonyms(y))
