@@ -9,7 +9,6 @@ def replace(word, string, synonymList):
 # Takes a word and a string. Replaces all occurrences of word
 # in string with elements from synonymList except the first.
 # replace(...) returns a string containing all changes.
-def replace(word, string, synonymList):
     my_list = string.split(" ")
     seen = False
     cap = len(synonymList)-1
