@@ -17,6 +17,7 @@ def replace(word, string, synonymList):
         for i in range(0, len(my_list)):
             if seen and my_list[i] == word:
                 my_list[i] = synonymList[synonymListCounter]
+                print("replacing " + word + " with " + my_list[i])
                 synonymListCounter += 1
                 # in the case that we reach the maximum amount of synonyms
                 # loop to the begining by setting the counter back to 0

@@ -17,4 +17,4 @@ class SlidingWindow:
         
 
 
-    p1 = newParagraphBreaker.ParagraphBreaker("testingFileDream.txt")
+    p1 = newParagraphBreaker.ParagraphBreaker("testingFileDream.txt", ignoreList = ["and","the","a","in","i","you","of","to", "with", "is", "be", "in", "as", "have", "that", "this"])

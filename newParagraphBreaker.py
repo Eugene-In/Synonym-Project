@@ -34,7 +34,7 @@ class ParagraphBreaker:
                     sentences = loweredArray.split('.')
                     for y in sentences:
                         splitArray = re.findall(r"[\w']+", y)
-                        freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
+                        freqTable = DataManager.manager(ignoreList, splitArray)
                         #print(freqTable)
                         #replaceEngine(freqTable) would replace this part of the code
                         wordsToReplace = []
@@ -48,14 +48,19 @@ class ParagraphBreaker:
                             
                 else:
                     splitArray = re.findall(r"[\w']+", loweredArray)
-                    freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
+                    freqTable = DataManager.manager(ignoreList, splitArray)
                     #print(freqTable)
                     #replaceEngine(freqTable) would replace this part of the code
                     toReplace = self.replaceEngine(freqTable)
                     
+                    
+                    print("toReplace: ", toReplace)
                     for j in toReplace:
+                    
                         wordsToUse = syn.synonyms(j)
-                        print(repl.replace(j, x, wordsToUse))
+                        print ("synonyms for " + j +" are ", wordsToUse)
+                        x = repl.replace(j, x, wordsToUse)
+                        print("new string: " + x)
 
 
 #unfinished shortcut manager. The basic structure is pretty basic
