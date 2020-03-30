@@ -4,6 +4,7 @@ import dictionaryHandler as syn
 from ignore import IgnoreList
 from dataManager import DataManager
 from window import LookingGlass
+import replace as repl
 
 class ParagraphBreaker:
 
@@ -50,7 +51,12 @@ class ParagraphBreaker:
                     freqTable = DataManager.manager(["and","the","a","in","i","you"], splitArray)
                     #print(freqTable)
                     #replaceEngine(freqTable) would replace this part of the code
-                    self.replaceEngine(freqTable)
+                    toReplace = self.replaceEngine(freqTable)
+                    
+                    for j in toReplace:
+                        wordsToUse = syn.synonyms(j)
+                        print(repl.replace(j, x, wordsToUse))
+
 
 #unfinished shortcut manager. The basic structure is pretty basic
         def shortcutMaker(self, shortcutMap, replaceString):
@@ -65,5 +71,4 @@ class ParagraphBreaker:
                 if freqTable.get(y) != 1:
                     wordsToReplace.append(y)
             #print(wordsToReplace)
-            for y in wordsToReplace:
-                print("Synonyms for '" + y + "' are: ",syn.synonyms(y))
+            return wordsToReplace
