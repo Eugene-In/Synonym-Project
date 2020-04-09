@@ -14,7 +14,7 @@ class SlidingWindow:
         outputFreq = True
     if '-t' in sys.argv:
         outputText = True
-        
+
 
 
     p1 = newParagraphBreaker.ParagraphBreaker("testingFileDream.txt", ignoreList = ["and","the","a","in","i","you","of","to", "with", "is", "be", "in", "as", "have", "that", "this"])

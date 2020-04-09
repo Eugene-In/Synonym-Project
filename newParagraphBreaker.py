@@ -11,7 +11,7 @@ class ParagraphBreaker:
         def __init__(self, file, ignoreList=None, shortcutList=None):
             global filename
             fileName = file
-            
+
             with open(fileName, encoding="utf-8") as f:
                 data = f.readlines()
 
@@ -43,31 +43,32 @@ class ParagraphBreaker:
                                 wordsToReplace.append(y)
                         #print(wordsToReplace)
                         for y in wordsToReplace:
-                            print("\nSynonyms for '" + y + "' are: ",syn.synonyms(y))
+                            wordsToUse = syn.synonyms(y)
+                            print("\nSynonyms for '" + y + "' are: ",wordsToUse)
                             print('\n')
-                            
+                            x = repl.replace(y, x, wordsToUse)
+                        print("\nnew string: " + x+"\n")
+
                 else:
                     splitArray = re.findall(r"[\w']+", loweredArray)
                     freqTable = DataManager.manager(ignoreList, splitArray)
                     #print(freqTable)
                     #replaceEngine(freqTable) would replace this part of the code
                     toReplace = self.replaceEngine(freqTable)
-                    
-                    
-                    print("toReplace: ", toReplace)
                     for j in toReplace:
-                    
+
                         wordsToUse = syn.synonyms(j)
-                        print ("synonyms for " + j +" are ", wordsToUse)
+                        print ("\nsynonyms for " + j +" are ", wordsToUse)
+                        print("\n")
                         x = repl.replace(j, x, wordsToUse)
-                        print("new string: " + x)
+                    print("\nnew string: " + x+"\n")
 
 
 #unfinished shortcut manager. The basic structure is pretty basic
         def shortcutMaker(self, shortcutMap, replaceString):
             for x in replaceString:
                 for y in shortcutMap:
-                    x.replace(y, shortcutMap[y])
+                    x.replace(y, replaceString, shortcutMap[y])
 
 
         def replaceEngine(self, freqTable):
