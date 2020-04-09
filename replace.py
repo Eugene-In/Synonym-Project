@@ -29,7 +29,7 @@ def replace(word, string, synonymList):
                 if len(symbols) > 1:
                      updater+= symbols[1]
                 my_list[i] = updater
-                print("\nreplacing " + word + " with " + my_list[i]+'\n')
+                #print("\nreplacing " + word + " with " + my_list[i]+'\n')
                 synonymListCounter += 1
                 # in the case that we reach the maximum amount of synonyms
                 # loop to the begining by setting the counter back to 0
