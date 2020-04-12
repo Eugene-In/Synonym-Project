@@ -3,7 +3,6 @@ import re
 import dictionaryHandler as syn
 from ignore import IgnoreList
 from dataManager import DataManager
-from window import LookingGlass
 import replace as repl
 from output import WriteNewFile
 from tracker import LoadingBar
@@ -18,8 +17,7 @@ class ParagraphBreaker:
                 data = f.readlines()
             f.close()
 
-            fileCtn = 1
-            io = WriteNewFile.fileCreator(fileCtn)
+            io = WriteNewFile.fileCreator()
 
             while True:
                 try:
