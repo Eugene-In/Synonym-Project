@@ -1,5 +1,6 @@
 class WriteNewFile:
-    def fileCreator(fileCtn):
+    def fileCreator():
+        fileCtn = 1
         while True:
             try:
                 file = "editedFile"
