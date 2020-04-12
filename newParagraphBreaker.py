@@ -9,9 +9,10 @@ from tracker import LoadingBar
 
 class ParagraphBreaker:
 
-        def __init__(self, file, ignoreList=None, shortcutList=None):
+        def __init__(self, fileName, ignoreList=[], shortcutList=None, response=0):
             global filename
-            fileName = file
+            
+          
 
             with open(fileName, encoding="utf-8") as f:
                 data = f.readlines()
@@ -19,17 +20,6 @@ class ParagraphBreaker:
 
             io = WriteNewFile.fileCreator()
 
-            while True:
-                try:
-                    response = input('\nBreak down to sentences?\n').lower()
-                    if response == 'yes':
-                        break
-                    elif response == 'no':
-                        break
-                    else:
-                        print("\nPlease input yes or no ONLY\n")
-                except ValueError:
-                    print("\nError, yes or no ONLY\n")
             #I tried to make this flag system it's own method
             #But it needs to be in here.
             #It's so it can print out a sort of loading bar
@@ -67,7 +57,7 @@ class ParagraphBreaker:
                         f = True
                         flagCnt += 1
                 loweredArray = x.lower()
-                if response == 'yes':
+                if response == 1:
                     sentences = loweredArray.split('.')
                     for y in sentences:
                         splitArray = re.findall(r"[\w']+", y)
