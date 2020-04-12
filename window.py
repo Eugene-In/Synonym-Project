@@ -1,3 +1,6 @@
+'''
+Our first version with a sliding wondow before switching over to reading the files by lines.
+
 from ignore import IgnoreList
 from dataManager import DataManager
 import dictionaryHandler as syn
@@ -59,3 +62,4 @@ class LookingGlass:
                 displayCnt = 0
 
         print("done")
+'''
