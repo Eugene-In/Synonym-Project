@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 import newParagraphBreaker
+import json
 
 defaultIgnore = ["and","the","a","in","i","you","of","to", "with", "is", "be", "in", "as", "have", "that", "this"]
 finalAddress = None
@@ -16,11 +17,16 @@ def main():
             else:
                 value = finalAddress
             ignore = wordsToIgnore.get()
+            shortCuts = wordsToShortcut.get()
             if(ignore != ''):
                 finalIgnore = defaultIgnore + ignore.split()
             else:
                 finalIgnore = defaultIgnore
-            newParagraphBreaker.ParagraphBreaker(value, ignoreList = finalIgnore, shortcutList = None, response=sentances.get())
+            if(shortCuts != ''):
+                finalShortcut = json.loads(shortCuts)
+            else:
+                finalShortcut = None
+            newParagraphBreaker.ParagraphBreaker(value, ignoreList = finalIgnore, shortcutList = finalShortcut, response=sentances.get())
         except ValueError:
             pass
 

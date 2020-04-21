@@ -9,10 +9,11 @@ from tracker import LoadingBar
 
 class ParagraphBreaker:
 
-        def __init__(self, fileName, ignoreList=[], shortcutList=None, response=0):
+        def __init__(self, fileName, ignoreList, shortcutList, response):
             global filename
             
-          
+            if shortcutList != None:
+                ignoreList = ignoreList+list(shortcutList.values())
 
             with open(fileName, encoding="utf-8") as f:
                 data = f.readlines()
@@ -56,6 +57,11 @@ class ParagraphBreaker:
                     elif flagCnt == 6:
                         f = True
                         flagCnt += 1
+                        
+                if shortcutList != None:
+                    for vals in shortcutList:
+                        x = x.replace(vals, shortcutList[vals])
+                        
                 loweredArray = x.lower()
                 if response == 1:
                     sentences = loweredArray.split('.')
